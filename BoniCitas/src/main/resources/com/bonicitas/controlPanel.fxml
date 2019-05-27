@@ -264,7 +264,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneCitasPaciente" prefHeight="502.0" prefWidth="1022.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+      <AnchorPane fx:id="paneCitasPaciente" prefHeight="502.0" prefWidth="1022.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
          <children>
             <JFXTreeTableView prefHeight="437.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="489.0" AnchorPane.topAnchor="0.0">
                <columns>
