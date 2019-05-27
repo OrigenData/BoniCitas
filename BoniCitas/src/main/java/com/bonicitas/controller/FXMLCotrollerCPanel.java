@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.ListSelectionView;
@@ -150,6 +152,8 @@ public class FXMLCotrollerCPanel implements Initializable, GlobalData{
     public int idTUser;
     public String nombreUsuario;
     public String TITLE_GENERIC;
+    public ArrayList<Integer> arrayEspecialidad = new ArrayList<Integer>(); //Cuenta cuantas especialidades fueron seleccionadas
+    ArrayList<JFXCheckBox> Especialidad = new ArrayList<>();
     
     //Manejo de la Base de datos 
     DataBase db = new DataBase();
@@ -247,48 +251,84 @@ public class FXMLCotrollerCPanel implements Initializable, GlobalData{
     	
     }
     
+    
+
+    @FXML
+    void onActionSaveEspecialidad(ActionEvent event) {
+    	/*
+    	JFXCheckBox[] n= new JFXCheckBox[3];
+    	n[0] = cbe1;
+    	n[1] = cbe2;
+    	n[2] = cbe3;
+    	
+    	n[1].setSelected(true);
+
+    	
+    	*/
+    	checkEspecialidad();
+    	
+    	System.out.println("ID : "+db.getIdUsuario());
+    	System.out.println(arrayEspecialidad.size());
+
+    	db.insetEspecialidadMedico(idtPueblerino, arrayEspecialidad.size(), arrayEspecialidad);
+    	
+
+    	
+    }
+    
     //Checkbox Datos Clinicos
     
-    public void checkEventEspecialidad(ActionEvent event) {
+    public void checkEspecialidad() {
+    	
     	
     	if(cbe1.isSelected()) {
-    		System.out.println("1");
+    		//System.out.println("1");
+    		arrayEspecialidad.add(1);
     	}
     	
     	if(cbe2.isSelected()) {
-    		System.out.println("2");
+    		//System.out.println("2");
+    		arrayEspecialidad.add(2);
     	}
     	
     	if(cbe3.isSelected()) {
-    		System.out.println("3");
+    		//System.out.println("3");
+    		arrayEspecialidad.add(3);
     	}
     	
     	if(cbe4.isSelected()) {
-    		System.out.println("4");
+    		//System.out.println("4");
+    		arrayEspecialidad.add(4);
     	}
     	
     	if(cbe5.isSelected()) {
-    		System.out.println("5");
+    		//System.out.println("5");
+    		arrayEspecialidad.add(5);
     	}
     	
     	if(cbe6.isSelected()) {
-    		System.out.println("1");
+    		//System.out.println("6");
+    		arrayEspecialidad.add(6);
     	}
     	
     	if(cbe7.isSelected()) {
-    		System.out.println("1");
+    		//System.out.println("7");
+    		arrayEspecialidad.add(7);
     	}
     	
     	if(cbe8.isSelected()) {
-    		System.out.println("1");
+    		//System.out.println("8");
+    		arrayEspecialidad.add(8);
     	}
     	
     	if(cbe9.isSelected()) {
-    		System.out.println("1");
+    		//System.out.println("9");
+    		arrayEspecialidad.add(9);
     	}
     	
     	if(cbe10.isSelected()) {
-    		System.out.println("1");
+    		//System.out.println("10");
+    		arrayEspecialidad.add(10);
     	}
     }
     
@@ -399,6 +439,35 @@ public class FXMLCotrollerCPanel implements Initializable, GlobalData{
 				
 			}
 			
+			
+			
+			//CheckBOX
+			//db.countEspecialidadMedico(db.getIdUsuario());
+			
+			System.out.println(idtPueblerino);
+			for (Integer integer : db.countEspecialidadMedico(idtPueblerino)) {
+				System.out.println("c  ----> "+integer);
+			}
+			
+	    	JFXCheckBox[] cb= new JFXCheckBox[10];
+	    	cb[0] = cbe1;
+	    	cb[1] = cbe2;
+	    	cb[2] = cbe3;
+	    	cb[3] = cbe4;
+	    	cb[4] = cbe5;
+	    	cb[5] = cbe6;
+	    	cb[6] = cbe7;
+	    	cb[7] = cbe8;
+	    	cb[8] = cbe9;
+	    	cb[9] = cbe10;
+	    	
+	    	for (Integer integer : db.countEspecialidadMedico(idtPueblerino)) {
+				System.out.println("c  ----> "+integer);
+				cb[integer-1].setSelected(true);
+			}
+	    	
+	    	
+	    	
 	       
 	    });
     	
@@ -418,9 +487,15 @@ public class FXMLCotrollerCPanel implements Initializable, GlobalData{
     	paneCitasMedico.setVisible(false);
     	paneEspecialidad.setVisible(false);
     	
+    	//cbe2.setSelected(true);
+    	
+    	
     	
     	radioHombre.setToggleGroup(groupSex);
     	radioMujer.setToggleGroup(groupSex);
+    	
+    	
+    	
     	
 	}
 

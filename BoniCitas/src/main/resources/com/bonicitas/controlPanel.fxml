@@ -610,7 +610,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <JFXComboBox prefHeight="26.0" prefWidth="505.0" style="-fx-background-color: #d3d3d3;" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="comboGrupoSanguineo" prefHeight="26.0" prefWidth="505.0" style="-fx-background-color: #d3d3d3;" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane layoutX="35.0" layoutY="165.0" prefHeight="127.0" prefWidth="535.0">
@@ -626,18 +626,18 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXCheckBox text="Diabetes" GridPane.halignment="LEFT" />
-                        <JFXCheckBox text="Problemas auditivos" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-                        <JFXCheckBox text="Sinusitis" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-                        <JFXCheckBox text="Artritis y Artrosis" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-                        <JFXCheckBox text="Problemas visuales" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
-                        <JFXCheckBox text="Demensia Senil" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-                        <JFXCheckBox text="Tiroides" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-                        <JFXCheckBox text="Hipertension arterial" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-                        <JFXCheckBox text="Cardiovascular" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
-                        <JFXCheckBox text="Parkinson" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-                        <JFXCheckBox text="Alzheimer" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-                        <JFXCheckBox text="Osteoporosis" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+                        <JFXCheckBox fx:id="cbp1" text="Diabetes" GridPane.halignment="LEFT" />
+                        <JFXCheckBox fx:id="cbp3" text="Sinusitis" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+                        <JFXCheckBox fx:id="cbp6" text="Demensia Senil" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+                        <JFXCheckBox fx:id="cbp7" text="Hipertension arterial" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+                        <JFXCheckBox fx:id="cbp4" text="Cardiovascular" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+                        <JFXCheckBox fx:id="cbp2" text="Parkinson" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+                        <JFXCheckBox fx:id="cbp9" text="Alzheimer" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
+                        <JFXCheckBox fx:id="cbp5" text="Osteoporosis" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
+                        <JFXCheckBox fx:id="cbp8" text="Problemas visuales" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <JFXCheckBox fx:id="cbp10" text="Tiroides" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <JFXCheckBox fx:id="cbp11" text="Problemas auditivos" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <JFXCheckBox fx:id="cbp12" text="Artritis y Artrosis" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>
@@ -657,7 +657,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="915.0" layoutY="495.0" text="GUARDAR" AnchorPane.bottomAnchor="50.0">
+            <JFXButton layoutX="915.0" layoutY="495.0" onAction="#onActionSaveDatosClinicos" text="GUARDAR" AnchorPane.bottomAnchor="50.0">
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -668,7 +668,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneEspecialidad" layoutX="227.0" layoutY="75.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+      <AnchorPane fx:id="paneEspecialidad" layoutX="227.0" layoutY="75.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
          <children>
             <Pane fx:id="panePerfil11" prefHeight="200.0" prefWidth="742.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
                <children>
@@ -718,16 +718,16 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXCheckBox fx:id="cbe1" onAction="#checkEventEspecialidad" text="Neurologia" GridPane.halignment="LEFT" />
-                        <JFXCheckBox fx:id="cbe2" onAction="#checkEventEspecialidad" text="Oncologia" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-                        <JFXCheckBox fx:id="cbe3" onAction="#checkEventEspecialidad" text="Cardiología" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-                        <JFXCheckBox fx:id="cbe4" onAction="#checkEventEspecialidad" text="Oftalmología" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-                        <JFXCheckBox fx:id="cbe5" onAction="#checkEventEspecialidad" text="Urología" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
-                        <JFXCheckBox fx:id="cbe6" onAction="#checkEventEspecialidad" text="Toxicología" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-                        <JFXCheckBox fx:id="cbe7" onAction="#checkEventEspecialidad" text="Neumología" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-                        <JFXCheckBox fx:id="cbe8" onAction="#checkEventEspecialidad" text="Nutriología" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-                        <JFXCheckBox fx:id="cbe9" onAction="#checkEventEspecialidad" text="Otorrinolaringología" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
-                        <JFXCheckBox fx:id="cbe10" onAction="#checkEventEspecialidad" text="Ginecología" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+                        <JFXCheckBox fx:id="cbe1" text="Neurologia" GridPane.halignment="LEFT" />
+                        <JFXCheckBox fx:id="cbe2" text="Oncologia" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+                        <JFXCheckBox fx:id="cbe3" text="Cardiología" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+                        <JFXCheckBox fx:id="cbe4" text="Oftalmología" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+                        <JFXCheckBox fx:id="cbe5" text="Urología" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
+                        <JFXCheckBox fx:id="cbe6" text="Toxicología" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+                        <JFXCheckBox fx:id="cbe7" text="Neumología" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+                        <JFXCheckBox fx:id="cbe8" text="Nutriología" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+                        <JFXCheckBox fx:id="cbe9" text="Otorrinolaringología" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
+                        <JFXCheckBox fx:id="cbe10" text="Ginecología" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>
@@ -747,7 +747,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="915.0" layoutY="495.0" text="GUARDAR" AnchorPane.bottomAnchor="50.0">
+            <JFXButton layoutX="915.0" layoutY="495.0" onAction="#onActionSaveEspecialidad" text="GUARDAR" AnchorPane.bottomAnchor="50.0">
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -2,6 +2,7 @@ package com.bonicitas.driving;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import com.bonicitas.controller.WhatPerson;
 import com.bonicitas.permanent.GlobalData;
@@ -248,5 +249,86 @@ public class DataBase extends WhatPerson implements GlobalData{
 	}
 	
 
+	public void insetEspecialidadMedico(int id, int NumEspec, ArrayList<Integer> Valores) {
+		
+		try {
+			DB = DriverManager.getConnection(URL, DBUSER, DBPASSWD);
+			
+			String query = "INSERT INTO public.\"Usuario_Especialidad\"(\n" + 
+					"	\"idUsuarioFK\", \"IdEspecialidadFK\")\n" + 
+					"	VALUES (?, ?);";
+			
+			
+			for (int i = 0; i < Valores.size(); i++) {
+				
+				pst= DB.prepareStatement(query);
+				
+				pst.setInt(1, id);
+				pst.setInt(2, Valores.get(i));
+				
+				pst.executeUpdate();
+				
+			}
+			
+
+			pst.close();
+			DB.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
 	
+	
+	public ArrayList<Integer> countEspecialidadMedico(int idMedico) {
+		//int idMedico = 3;
+		 ArrayList<Integer> Valores = new ArrayList<>();
+		
+		try {
+			DB = DriverManager.getConnection(URL, DBUSER, DBPASSWD);
+			
+			String query = " SELECT \"Usuario_Especialidad\".\"idUsuario_Especialidad\",\n" + 
+					"    \"Usuario_Especialidad\".\"idUsuarioFK\",\n" + 
+					"    \"Usuario\".\"Nombres\",\n" + 
+					"    \"Usuario_Especialidad\".\"IdEspecialidadFK\",\n" + 
+					"    \"Especialidades\".\"DescEspecialidad\"\n" + 
+					"   FROM \"Usuario_Especialidad\",\n" + 
+					"    \"Usuario\",\n" + 
+					"    \"Especialidades\"\n" + 
+					"  WHERE \"Usuario_Especialidad\".\"idUsuarioFK\" = ? "
+					+ "AND \"Usuario\".\"IdUsuario\" = \"Usuario_Especialidad\".\"idUsuarioFK\" "
+					+ "AND \"Usuario_Especialidad\".\"IdEspecialidadFK\" = \"Especialidades\".\"IdEspecialidad\";";
+			
+			pst= DB.prepareStatement(query);
+			
+			pst.setInt(1, idMedico);
+			
+			rs = pst.executeQuery();
+			
+			while ( rs.next() ) { 
+				   // Read the next item
+				Valores.add(rs.getInt(4));
+				
+			}
+			
+
+				
+			
+			DB.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return Valores;
+		
+	}
 }
