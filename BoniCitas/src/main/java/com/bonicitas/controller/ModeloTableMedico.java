@@ -1,5 +1,7 @@
 package com.bonicitas.controller;
 
+import java.util.ArrayList;
+
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -19,6 +21,7 @@ public class ModeloTableMedico extends RecursiveTreeObject<ModeloTableMedico>{
 		this.ESTATUS = new SimpleStringProperty(estatus);
 		 
 	}
+	
 
 
 	public StringProperty getFECHA() {
@@ -66,8 +69,8 @@ public class ModeloTableMedico extends RecursiveTreeObject<ModeloTableMedico>{
 	}
 
 
-	public void setESTATUS(StringProperty eSTATUS) {
-		ESTATUS = eSTATUS;
+	public void setESTATUS(String eSTATUS) {
+		this.ESTATUS = new SimpleStringProperty(eSTATUS);
 	}
 	
 	

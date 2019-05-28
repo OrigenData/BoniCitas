@@ -1,9 +1,13 @@
 package com.bonicitas.driving;
 
+import javafx.collections.ObservableList;
+
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import com.bonicitas.controller.ModeloTableMedico;
 import com.bonicitas.controller.WhatPerson;
 import com.bonicitas.permanent.GlobalData;
 
@@ -333,10 +337,10 @@ public class DataBase extends WhatPerson implements GlobalData{
 	}
 
 	
-	
-	public void showTableCitasMedico(int id) {
-		
-		
+
+
+	public void showTableCitasMedico1(int idtPueblerino) {
+		// TODO Auto-generated method stub
 		try {
 			DB = DriverManager.getConnection(URL, DBUSER, DBPASSWD);
 			
@@ -353,29 +357,22 @@ public class DataBase extends WhatPerson implements GlobalData{
 			
 			pst= DB.prepareStatement(query);
 			
-			pst.setInt(1, id);
+			pst.setInt(1, idtPueblerino);
 			
 			rs = pst.executeQuery();
 			
-			if (rs.next()) {
+			while    ( rs.next() ) {
+				
+				//listTableMedico.addAll(new mtm
+                
+			}
+		
 
 				System.out.println(rs.getDate(1));
 				System.out.println(rs.getTime(2));
 				System.out.println(rs.getString(3));
 				System.out.println(rs.getString(4));
-					/*
-					setIdUsuario(rs.getInt(1));
-					setNombres(rs.getString(2));
-					setAPaterno(rs.getString(3));
-					setAMaterno(rs.getString(4));
-					*/
-					
-			
-				} else {
-					System.out.println("Mas informacion");
-				}
-				
-			
+
 			
 			DB.close();
 			
