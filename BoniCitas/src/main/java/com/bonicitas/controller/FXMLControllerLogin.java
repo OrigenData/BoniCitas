@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.controlsfx.control.Notifications;
+
 import com.bonicitas.Main;
 import com.bonicitas.permanent.GlobalData;
 import com.jfoenix.controls.JFXButton;
@@ -89,7 +91,7 @@ public class FXMLControllerLogin extends WhatPerson implements Initializable, Gl
 
     @FXML
     void OnActionLoginRegistrate(ActionEvent event) {
-    	
+    	 
     	System.out.println("Registrate");
     	new Main().windowRegister(Paciente);
 

@@ -17,19 +17,48 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Callback;
 
 
 public class FXMLCotrollerCPanel implements Initializable, GlobalData{
+	
+    @FXML
+    private JFXTreeTableView<ModeloTableMedico> treeTableMedico;
+
+    @FXML
+    private TreeTableColumn<ModeloTableMedico, String> fechaColTableMedico;
+
+    @FXML
+    private TreeTableColumn<ModeloTableMedico, String> horaColTableMedico;
+
+    @FXML
+    private TreeTableColumn<ModeloTableMedico, String> pacienteColTableMedico;
+
+    @FXML
+    private TreeTableColumn<ModeloTableMedico, String> especialidadColTableMedico;
+
+    @FXML
+    private TreeTableColumn<ModeloTableMedico, String> estatusColTableMedico;
+
 	
     @FXML
     private JFXTextField txtUserCuenta;
@@ -154,6 +183,7 @@ public class FXMLCotrollerCPanel implements Initializable, GlobalData{
     public String TITLE_GENERIC;
     public ArrayList<Integer> arrayEspecialidad = new ArrayList<Integer>(); //Cuenta cuantas especialidades fueron seleccionadas
     ArrayList<JFXCheckBox> Especialidad = new ArrayList<>();
+    ObservableList<ModeloTableMedico> listTableMedico;
     
     //Manejo de la Base de datos 
     DataBase db = new DataBase();
@@ -497,7 +527,81 @@ public class FXMLCotrollerCPanel implements Initializable, GlobalData{
     	radioMujer.setToggleGroup(groupSex);
     	
     	
+    	/*
+    	 
+    	     @FXML
+    private TreeTableColumn<ModeloTableMedico, String> fechaColTableMedico;
+
+    @FXML
+    private TreeTableColumn<ModeloTableMedico, String> horaColTableMedico;
+
+    @FXML
+    private TreeTableColumn<ModeloTableMedico, String> pacienteColTableMedico;
+
+    @FXML
+    private TreeTableColumn<ModeloTableMedico, String> especialidadColTableMedico;
+
+    @FXML
+    private TreeTableColumn<ModeloTableMedico, String> estatusColTableMedico;
+    	 * 
+    	 */
     	
+    	
+    	fechaColTableMedico.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ModeloTableMedico,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ModeloTableMedico, String> param) {
+				// TODO Auto-generated method stub
+				return param.getValue().getValue().FECHA;
+			}
+		});
+    	
+    	horaColTableMedico.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ModeloTableMedico,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ModeloTableMedico, String> param) {
+				// TODO Auto-generated method stub
+				return param.getValue().getValue().HORA;
+			}
+		});
+    	
+    	pacienteColTableMedico.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ModeloTableMedico,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ModeloTableMedico, String> param) {
+				// TODO Auto-generated method stub
+				return param.getValue().getValue().PACIENTE;
+			}
+		});
+    	
+    	
+    	especialidadColTableMedico.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ModeloTableMedico,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ModeloTableMedico, String> param) {
+				// TODO Auto-generated method stub
+				return param.getValue().getValue().ESPECIALIDAD;
+			}
+		});
+    	
+    	estatusColTableMedico.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ModeloTableMedico,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ModeloTableMedico, String> param) {
+				// TODO Auto-generated method stub
+				return param.getValue().getValue().ESTATUS;
+			}
+		});
+    	
+    	
+    	listTableMedico = FXCollections.observableArrayList();
+    	TreeItem<ModeloTableMedico> root = new RecursiveTreeItem<ModeloTableMedico>(listTableMedico, RecursiveTreeObject ::getChildren);
+    	treeTableMedico.setRoot(root);
+    	treeTableMedico.setShowRoot(false);
+    	
+    	
+    	listTableMedico.addAll(new ModeloTableMedico("sss", "qqqq", "qqqqqq", "dd", "984654"));
+    	listTableMedico.addAll(new ModeloTableMedico("Cristian", "qqqq", "qqqqqq", "dd", "984654"));
     	
 	}
 

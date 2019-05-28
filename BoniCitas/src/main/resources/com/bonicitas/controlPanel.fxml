@@ -264,13 +264,14 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneCitasPaciente" prefHeight="502.0" prefWidth="1022.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+      <AnchorPane fx:id="paneCitasPaciente" prefHeight="502.0" prefWidth="1022.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
          <children>
             <JFXTreeTableView prefHeight="437.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="489.0" AnchorPane.topAnchor="0.0">
                <columns>
                   <TreeTableColumn prefWidth="75.0" text="Fecha" />
                   <TreeTableColumn prefWidth="75.0" text="Hora" />
                   <TreeTableColumn prefWidth="75.0" text="Medico" />
+                  <TreeTableColumn prefWidth="75.0" text="Especialidad" />
                   <TreeTableColumn prefWidth="75.0" text="Estatus" />
                </columns>
                <columnResizePolicy>
@@ -422,12 +423,13 @@
       </AnchorPane>
       <AnchorPane fx:id="paneCitasMedico" layoutX="227.0" layoutY="75.0" prefHeight="502.0" prefWidth="1022.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
          <children>
-            <JFXTreeTableView prefHeight="437.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="489.0" AnchorPane.topAnchor="0.0">
+            <JFXTreeTableView fx:id="treeTableMedico" prefHeight="437.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="489.0" AnchorPane.topAnchor="0.0">
                <columns>
-                  <TreeTableColumn prefWidth="75.0" text="Fecha" />
-                  <TreeTableColumn prefWidth="75.0" text="Hora" />
-                  <TreeTableColumn prefWidth="75.0" text="Paciente" />
-                  <TreeTableColumn prefWidth="75.0" text="Estatus" />
+                  <TreeTableColumn fx:id="fechaColTableMedico" prefWidth="75.0" text="Fecha" />
+                  <TreeTableColumn fx:id="horaColTableMedico" prefWidth="75.0" text="Hora" />
+                  <TreeTableColumn fx:id="pacienteColTableMedico" prefWidth="75.0" text="Paciente" />
+                  <TreeTableColumn fx:id="especialidadColTableMedico" prefWidth="75.0" text="Especialidad" />
+                  <TreeTableColumn fx:id="estatusColTableMedico" prefWidth="75.0" text="Estatus" />
                </columns>
                <columnResizePolicy>
                   <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -565,7 +567,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="45.0" />
          </padding>
       </AnchorPane>
-      <AnchorPane fx:id="paneDatosClinicos" layoutX="227.0" layoutY="75.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+      <AnchorPane fx:id="paneDatosClinicos" layoutX="227.0" layoutY="75.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
          <children>
             <Pane fx:id="panePerfil1" prefHeight="200.0" prefWidth="742.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
                <children>
