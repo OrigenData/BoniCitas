@@ -178,6 +178,8 @@ public class FXMLCotrollerCPanel implements Initializable, GlobalData{
         	//Medico
         	paneCitasMedico.setVisible(true);
         	paneEspecialidad.setVisible(false);
+        	
+        	db.showTableCitasMedico(idtPueblerino);
     		
     	}else {
     		

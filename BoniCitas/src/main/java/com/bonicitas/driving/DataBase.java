@@ -331,4 +331,60 @@ public class DataBase extends WhatPerson implements GlobalData{
 		return Valores;
 		
 	}
+
+	
+	
+	public void showTableCitasMedico(int id) {
+		
+		
+		try {
+			DB = DriverManager.getConnection(URL, DBUSER, DBPASSWD);
+			
+			String query = "Select\n" + 
+					"\"Citas\".\"Fecha\",\n" + 
+					"\"Citas\".\"Hora\",\n" + 
+					"\"Paciente\".\"Nombres\" As Paciente,\n" + 
+					"\"Estatus\".\"DescEstatus\"\n" + 
+					"FROM \"Citas\"\n" + 
+					"left join \"Usuario\" on \"Citas\".\"IdUsuarioM FK\" = \"Usuario\".\"IdUsuario\"\n" + 
+					"left join \"Usuario\" as \"Paciente\" on \"Citas\".\"IdUsuarioPFK\" = \"Paciente\".\"IdUsuario\"\n" + 
+					"join \"Estatus\" on \"Citas\".\"IdEstatusFK\" = \"Estatus\".\"IdEstatus\"\n" + 
+					"WHERE \"Citas\".\"IdUsuarioM FK\" = ?";
+			
+			pst= DB.prepareStatement(query);
+			
+			pst.setInt(1, id);
+			
+			rs = pst.executeQuery();
+			
+			if (rs.next()) {
+
+				System.out.println(rs.getDate(1));
+				System.out.println(rs.getTime(2));
+				System.out.println(rs.getString(3));
+				System.out.println(rs.getString(4));
+					/*
+					setIdUsuario(rs.getInt(1));
+					setNombres(rs.getString(2));
+					setAPaterno(rs.getString(3));
+					setAMaterno(rs.getString(4));
+					*/
+					
+			
+				} else {
+					System.out.println("Mas informacion");
+				}
+				
+			
+			
+			DB.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+
 }
